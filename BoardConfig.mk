@@ -1,0 +1,50 @@
+LOCAL_PATH := device/ngm/E506plus
+
+# Architecture
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := cortex-a7
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
+TARGET_LDPRELOAD := libxlog.so
+
+BOARD_HAS_NO_SELECT_BUTTON := true
+
+# BOOTLOADER
+TARGET_BOOTLOADER_BOARD_NAME := mt6580
+
+# Kernel
+BOARD_KERNEL_CMDLINE += \
+	bootopt=64S3,32S1,32S1 \
+	androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS  := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000 --board X510-D5110-L-20
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/zImage-dtb
+
+# RECOVERY
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/twrp.fstab
+
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1689255936
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 13958643712
+BOARD_FLASH_BLOCK_SIZE := 131072
+
+# TWRP
+TW_THEME := portrait_hdpi
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
+TW_MAX_BRIGHTNESS := 255
+TW_INCLUDE_FB2PNG := true
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
+TW_EXCLUDE_SUPERSU := true
+TW_INCLUDE_CRYPTO := true
+TW_DEFAULT_LANGUAGE := it
