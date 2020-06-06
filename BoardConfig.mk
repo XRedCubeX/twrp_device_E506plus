@@ -46,7 +46,6 @@ TW_MAX_BRIGHTNESS := 255
 TW_INCLUDE_FB2PNG := true
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TW_EXCLUDE_SUPERSU := true
-TW_INCLUDE_CRYPTO := true
 TW_DEFAULT_LANGUAGE := it
 RECOVERY_SDCARD_ON_DATA := true
 TW_INTERNAL_STORAGE_PATH := /data/media
